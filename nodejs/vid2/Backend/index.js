@@ -1,9 +1,18 @@
+require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const app = express()
-const port = 3000
+
+const port = process.env.PORT || 5000
+// middleware
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
+})
+
+app.get('/facebook', (req, res) => {
+  res.send('withrifat')
 })
 
 app.listen(port, () => {
