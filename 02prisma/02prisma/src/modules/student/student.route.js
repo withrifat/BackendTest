@@ -4,10 +4,7 @@ import * as studentController from "./student.controller.js";
 
 import validate from "../../middlewares/validate.middleware.js";
 
-import {
-  createStudentSchema,
-  updateStudentSchema,
-} from "./student.validation.js";
+import {createStudentSchema, updateStudentSchema,} from "./student.validation.js";
 
 const router = Router();
 

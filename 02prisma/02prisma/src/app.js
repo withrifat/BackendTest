@@ -1,6 +1,7 @@
 import express from "express";
 
 import studentRoutes from "./modules/student/student.route.js";
+// import userRoutes from "./modules/user/user.route.js";
 
 import notFound from "./middlewares/not-found.middleware.js";
 import errorHandler from "./middlewares/error.middleware.js";
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 // API routes
 app.use("/api/students", studentRoutes);
+// app.use("/api/users", userRoutes);
 
 // Error handling
 app.use(notFound);
