@@ -1,6 +1,5 @@
 import { AuthorService } from "./author.service.js";
 import catchAsync from "../../utils/catchAsync.js";
-import prisma from "../../lib/prisma.js";
 import { StatusCodes } from "http-status-codes";
 
 const createAuthor = catchAsync(async (req, res) => {
@@ -21,8 +20,42 @@ const getAllAuthors = catchAsync(async (req, res) =>{
         data : authors ,
     })
 })
+const getAuthorById = catchAsync(async(req, res)=>{
+    const authorId = req.params.id;
+    const author = await AuthorService.getAuthorById(authorId);
+    res.status(StatusCodes.OK).json({
+        success : true,
+        message: "Author Fetched Successfully",
+        data : author,
+    })
+})
+const patchAuthor = catchAsync(async(req, res)=>{
+    const authorId = req.params.id;
+    const updateData = req.body;
+
+    const newAuthor = await AuthorService.patchAuthor(authorId,updateData);
+    res.status(StatusCodes.OK).json({
+        success: true,
+        message: "Author Patch Successfully",
+        data: newAuthor,
+    })
+})
+const deleteAuthor = catchAsync(async(req, res)=>{
+    const authorId = req.params.id;
+
+    const deleteAuthor = await AuthorService.deleteAuthor(authorId);
+    res.status(StatusCodes.OK).json({
+        success: true,
+        message: "Author delete Successfully",
+        data: deleteAuthor,
+    })
+
+})
 export const AuthorController = {
     createAuthor,
     getAllAuthors,
+    getAuthorById,
+    patchAuthor,
+    deleteAuthor
     
 }

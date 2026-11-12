@@ -1,23 +1,32 @@
+
 import { StatusCodes } from "http-status-codes";
 
 const errorHandler = (err, req, res, next) => {
   if (res.headersSent) return next(err);
 
   let statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
-  let message = statusCode === StatusCodes.INTERNAL_SERVER_ERROR ? "Internal Server Error" : err.message;
+  let message =
+    statusCode >= 500
+      ? "Internal Server Error"
+      : err.message || "Something went wrong";
 
   if (err.code === "P2002") {
     statusCode = StatusCodes.CONFLICT;
-    message = "A product with this SKU already exists";
+    const field = err.meta?.target?.[0] || "Field";
+    message = `${field} already exists`;
   } else if (err.code === "P2025") {
     statusCode = StatusCodes.NOT_FOUND;
-    message = "Product not found";
-  } else if (err.code === "P2000" || err.code === "P2006" || err.code === "P2011" || err.code === "P2012") {
+    message = "Requested resource not found";
+  } else if (
+    ["P2000", "P2006", "P2011", "P2012"].includes(err.code)
+  ) {
     statusCode = StatusCodes.BAD_REQUEST;
-    message = "Invalid product data";
+    message = "Invalid data provided";
   }
 
-  if (statusCode >= 500) console.error("Request failed:", err.message);
+  if (statusCode >= 500) {
+    console.error("Request failed:", err);
+  }
 
   res.status(statusCode).json({
     success: false,
