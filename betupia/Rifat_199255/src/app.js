@@ -1,9 +1,12 @@
 
 import express from "express";
 import cors from "cors";
+
 import notFoundMiddleware from "./middlewares/not-found.middleware.js";
 import errorMiddleware from "./middlewares/error.middleware.js";
+
 import productRoutes from "./modules/product/product.route.js";
+import authorRouter from "./modules/author/author.route.js";
 
 const app = express();
 
@@ -21,6 +24,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/authors", authorRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
