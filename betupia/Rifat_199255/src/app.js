@@ -7,6 +7,7 @@ import errorMiddleware from "./middlewares/error.middleware.js";
 
 import productRoutes from "./modules/product/product.route.js";
 import authorRouter from "./modules/author/author.route.js";
+import bookRouter from "./modules/book/book.route.js";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/products", productRoutes);
 app.use("/api/authors", authorRouter);
+app.use("/api/authors", bookRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorMiddleware);
