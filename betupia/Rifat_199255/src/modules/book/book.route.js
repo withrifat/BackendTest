@@ -5,6 +5,7 @@ import {updateBookValidationSchema, createBookValidationSchema} from "./book.val
 
 const router = express.Router();
 
+router.get("/",  BookController.getAllBooks);
 router.post("/", validate(createBookValidationSchema, "body"), BookController.createBook);
 
 

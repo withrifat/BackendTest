@@ -5,7 +5,14 @@ const createBook = async (payload)=>{
         data: payload,
     })
 }
-
+const getAllBooks = async()=>{
+    return await prisma.book.findMany({
+        orderBy:{
+            createdAt: 'desc',
+        }
+    })
+    
+}
 export const BookService ={
     createBook,
 
