@@ -1,0 +1,22 @@
+{
+  "name": "mdrifadulhaquelimon_209393",
+  "version": "1.0.0",
+  "description": "Product Management System - Express.js, Prisma, MongoDB",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "author": "Md Rifadul Haque Limon (209393)",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "6.19.3",
+    "dotenv": "16.6.1",
+    "express": "5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.1.14",
+    "prisma": "6.19.3"
+  }
+}
