@@ -13,6 +13,6 @@ export const authmiddleware = async(req, res, next)=>{
     } catch (error) {
         res.status(200).json({
             message: `check the error ${error}`
-        })sfdddddddddddddddddddddddd
+        })
     }
 }
