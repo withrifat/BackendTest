@@ -1,14 +1,10 @@
-import express, {
-  Application,
-  Request,
-  Response,
-  NextFunction,
-} from "express";
 import cors from "cors";
+import express, { Application, NextFunction, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-
-import { userRoutes } from "./modules/user/user.routes.js";
+import authRoutes from "./routes/auth.routes.js";
+import { HealthRoutes } from "./routes/health.route.js";
+// import { userRoutes } from "./modules/user/user.routes.js";
 
 const app: Application = express();
 
@@ -26,15 +22,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
-app.get("/health", (req: Request, res: Response) => {
-  res.status(200).json({
-    status: "OK",
-    timestamp: new Date().toISOString(),
-  });
-});
+app.use("/api/health", HealthRoutes);
 
 // API routes
-app.use("/api/v1/users", userRoutes);
+// app.use("/api/v1/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
