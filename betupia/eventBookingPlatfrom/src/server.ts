@@ -1,6 +1,6 @@
 import app from "./app.js";
-import prisma from "./config/prisma.js";
 import { ENV } from "./config/env.js";
+import { prisma } from "./config/prisma.js";
 
 async function bootstrap() {
   try {
