@@ -3,7 +3,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import authRoutes from "./routes/auth.routes.js";
-import { HealthRoutes } from "./routes/health.route.js";
+
 // import { userRoutes } from "./modules/user/user.routes.js";
 
 const app: Application = express();
@@ -22,7 +22,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Health check
-app.use("/api/health", HealthRoutes);
+app.get("/health", (req: Request, res: Response) => {
+  res.status(200).json({
+    status: "OK",
+    timestamp: new Date().toISOString(),
+  });
+});
 
 // API routes
 // app.use("/api/v1/users", userRoutes);
