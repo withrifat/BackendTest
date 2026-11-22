@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "express-prisma",
   "version": "1.0.0",
@@ -34,3 +35,39 @@
     "typescript": "^5.9.3"
   }
 }
+=======
+{
+  "name": "express-prisma",
+  "version": "1.0.0",
+  "description": "Express.js + TypeScript + Prisma + MongoDB backend",
+  "type": "module",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "node init && tsx watch src/server.ts",
+    "build": "node init && tsc",
+    "start": "node init && node dist/server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.19.3",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "http-status-codes": "^2.3.0",
+    "morgan": "^1.12.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^26.6.6",
+    "prisma": "^6.19.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
+>>>>>>> 2c724b54ae6314efacce79e23c99c833c4344c46
