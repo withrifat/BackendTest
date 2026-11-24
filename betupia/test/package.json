@@ -5,8 +5,8 @@
   "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node init && node src/server.js",
-    "dev": "node init && nodemon src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
   },
   "author": "Md Rifadul Haque Limon (209393)",
   "license": "ISC",
